@@ -1,10 +1,10 @@
 package main
 
 import (
-	pb "microService/consignment-service/proto/consignment"
 	"context"
-	"log"
+	pb "github.com/karlhjm/microService/consignment-service/proto/consignment"
 	"github.com/micro/go-micro"
+	"log"
 )
 
 //
