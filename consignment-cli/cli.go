@@ -1,19 +1,23 @@
 package main
 
 import (
+	"fmt"
 	pb "github.com/karlhjm/microService/consignment-service/proto/consignment"
 	"io/ioutil"
 	"encoding/json"
 	"errors"
-	"github.com/micro/go-micro"
-	"log"
+	micro "github.com/micro/go-micro"
+	//"github.com/micro/go-micro/config/cmd"
 	"os"
+
+	//microclient "github.com/micro/go-micro/client"
+	"log"
+	//"os"
 	"context"
 
 )
 
 const (
-	ADDRESS           = "localhost:50051"
 	DEFAULT_INFO_FILE = "consignment.json"
 )
 
@@ -33,10 +37,12 @@ func parseFile(fileName string) (*pb.Consignment, error) {
 
 func main() {
 
+
 	service := micro.NewService(micro.Name("go.micro.srv.consignment"))
 	service.Init()
 
 	client := pb.NewShippingService("go.micro.srv.consignment", service.Client())
+
 
 	// 在命令行中指定新的货物信息 json 文件
 	infoFile := DEFAULT_INFO_FILE
@@ -58,13 +64,15 @@ func main() {
 	}
 
 	// 新货物是否托运成功
-	log.Printf("created: %t", resp.Created)
+	fmt.Println("created: ", resp.Created)
+
 
 	resp, err = client.GetConsignments(context.Background(), &pb.GetRequest{})
 	if err != nil {
 		log.Fatalf("failed to list consignments: %v", err)
 	}
+
 	for _, c := range resp.Consignments {
-		log.Printf("%+v", c)
+		fmt.Println(c)
 	}
 }

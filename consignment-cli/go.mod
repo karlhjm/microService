@@ -8,4 +8,4 @@ require (
 
 )
 
-replace github.com/karlhjm/microService/consignment-service => /home/karl/Desktop/Untitled_Folder/microService/consignment-service
+replace github.com/karlhjm/microService/consignment-service => /home/karl/Desktop/Untitled/microService/consignment-service
