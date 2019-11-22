@@ -9,5 +9,3 @@ require (
 	github.com/micro/micro v1.16.0 // indirect
 	golang.org/x/vgo v0.0.0-20180912184537-9d567625acf4 // indirect
 )
-
-replace github.com/karlhjm/microService/vessel-service => /home/karl/Desktop/Untitled/microService/vessel-service
